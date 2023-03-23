@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1512</width>
-    <height>853</height>
+    <width>1370</width>
+    <height>699</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,12 +19,48 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1512</width>
+     <width>1370</width>
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuRecipe">
+    <property name="title">
+     <string>Recipe</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuRecipe"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNew">
+   <property name="icon">
+    <iconset>
+     <normaloff>E:/SPT/new.png</normaloff>E:/SPT/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset>
+     <normaloff>E:/SPT/Open.png</normaloff>E:/SPT/Open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset theme="window-close">
+     <normaloff>E:/SPT/Quit.png</normaloff>E:/SPT/Quit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

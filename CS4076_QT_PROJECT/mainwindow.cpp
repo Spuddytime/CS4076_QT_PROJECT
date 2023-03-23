@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     QMenuBar *menuBar = new QMenuBar(this);
     setMenuBar(menuBar);
 
-    // Create a "File" menu
-    QMenu *fileMenu = menuBar->addMenu(tr("File"));
+    // Create a "Recipe" menu
+    QMenu *fileMenu = menuBar->addMenu(tr("Recipe"));
 
     // Add "New" action
     QAction *newAction = new QAction(tr("New"), this);
