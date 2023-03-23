@@ -1,14 +1,18 @@
+//Name:Stephen Walsh ID:21334234
 
 #ifndef RECIPEWINDOW
 #define RECIPEWINDOW
 
 #include "qdialog.h"
+#include "recipe.h"
 #include <QTextEdit>
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QGridLayout>
 #include <QLabel>
 #include <QPushButton>
+
+extern Recipe recipeCreated;
 
 class RecipeWindow : public QDialog
 {

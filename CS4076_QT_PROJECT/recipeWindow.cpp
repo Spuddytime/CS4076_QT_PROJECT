@@ -1,4 +1,7 @@
+//Name:Stephen Walsh ID:21334234
+
 #include "recipewindow.h"
+#include "recipe.h"
 
 RecipeWindow::RecipeWindow(QWidget *parent)
     : QDialog(parent)
@@ -30,9 +33,19 @@ RecipeWindow::RecipeWindow(QWidget *parent)
 void RecipeWindow::saveRecipe()
 {
     // Extract the information from the widgets
-    QString name = nameEdit->text();
-    QString ingredients = ingredientsEdit->toPlainText();
-    QString instructions = instructionsEdit->toPlainText();
+        QString name = nameEdit->text();
+        QString ingredients = ingredientsEdit->toPlainText();
+        QString instructions = instructionsEdit->toPlainText();
 
+        // Create a new recipe and set its properties
+        Recipe recipe;
+        recipe.setName(name);
+        recipe.setIngredients(ingredients);
+        recipe.setInstructions(instructions);
 
-}
+        // Add the recipe to the recipe book
+        recipeCreated.addRecipe(recipe);
+
+        // Close the window
+        close();
+    }
