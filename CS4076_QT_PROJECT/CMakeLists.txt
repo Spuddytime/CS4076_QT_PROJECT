@@ -19,6 +19,7 @@ set(PROJECT_SOURCES
         mainwindow.ui
         recipeWindow.cpp
         recipewindow.h
+        recipe.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

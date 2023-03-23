@@ -19,6 +19,11 @@ RecipeWindow::RecipeWindow(QWidget *parent)
     layout->addWidget(instructionsEdit, 2, 1);
     layout->addWidget(new QPushButton(tr("OK"), this), 3, 0, 1, 2);
 
+    // Create and connect the "OK" button
+       QPushButton *okButton = new QPushButton(tr("OK"), this);
+       layout->addWidget(okButton, 3, 0, 1, 2);
+       connect(okButton, &QPushButton::clicked, this, &RecipeWindow::saveRecipe);
+
     setWindowTitle(tr("New Recipe"));
 }
 
