@@ -3,7 +3,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "qtextedit.h"
 #include <QMainWindow>
+#include <QDialog>
+#include <QTextEdit>
+#include <QLineEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,5 +26,18 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+};
+
+class RecipeWindow : public QDialog
+{
+    Q_OBJECT
+
+public:
+    RecipeWindow(QWidget *parent = nullptr);
+
+private:
+    QLineEdit *nameEdit;
+    QTextEdit *ingredientsEdit;
+    QTextEdit *instructionsEdit;
 };
 #endif // MAINWINDOW_H
