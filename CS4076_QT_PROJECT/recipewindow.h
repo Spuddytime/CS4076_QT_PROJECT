@@ -1,10 +1,14 @@
-#ifndef RECIPEWINDOW_H
-#define RECIPEWINDOW_H
+
+#ifndef RECIPEWINDOW
+#define RECIPEWINDOW
 
 #include "qdialog.h"
 #include <QTextEdit>
 #include <QLineEdit>
 #include <QMessageBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QPushButton>
 
 class RecipeWindow : public QDialog
 {

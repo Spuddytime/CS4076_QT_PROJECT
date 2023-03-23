@@ -2,6 +2,7 @@
 
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "recipewindow.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -37,8 +38,13 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::newRecipe()
 {
     QMessageBox::information(this, "New Recipe", "A new recipe is being created.");
-}
 
+    // Create a new instance of the RecipeWindow class
+    RecipeWindow *recipeWindow = new RecipeWindow(this);
+
+    // Show the RecipeWindow to the user
+    recipeWindow->show();
+}
 
 MainWindow::~MainWindow()
 {

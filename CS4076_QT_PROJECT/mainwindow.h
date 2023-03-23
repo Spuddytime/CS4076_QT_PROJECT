@@ -3,7 +3,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "qtextedit.h"
 #include <QMainWindow>
 #include <QDialog>
 #include <QTextEdit>

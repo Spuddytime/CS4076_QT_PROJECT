@@ -1,4 +1,4 @@
-#include <ui_mainwindow.h>
+#include "recipewindow.h"
 
 RecipeWindow::RecipeWindow(QWidget *parent)
     : QDialog(parent)
