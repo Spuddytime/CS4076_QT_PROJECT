@@ -17,10 +17,14 @@ class RecipeWindow : public QDialog
 public:
     RecipeWindow(QWidget *parent = nullptr);
 
+private slots:
+    void saveRecipe();
+
 private:
     QLineEdit *nameEdit;
     QTextEdit *ingredientsEdit;
     QTextEdit *instructionsEdit;
 };
+
 
 #endif // RECIPEWINDOW_H

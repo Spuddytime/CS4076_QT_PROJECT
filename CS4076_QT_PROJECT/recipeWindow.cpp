@@ -2,6 +2,7 @@
 
 RecipeWindow::RecipeWindow(QWidget *parent)
     : QDialog(parent)
+
 {
     // Create the widgets
     nameEdit = new QLineEdit(this);
@@ -19,4 +20,14 @@ RecipeWindow::RecipeWindow(QWidget *parent)
     layout->addWidget(new QPushButton(tr("OK"), this), 3, 0, 1, 2);
 
     setWindowTitle(tr("New Recipe"));
+}
+
+void RecipeWindow::saveRecipe()
+{
+    // Extract the information from the widgets
+    QString name = nameEdit->text();
+    QString ingredients = ingredientsEdit->toPlainText();
+    QString instructions = instructionsEdit->toPlainText();
+
+
 }
