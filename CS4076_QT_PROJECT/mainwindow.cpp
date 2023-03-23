@@ -31,8 +31,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Set the main window title and size
     setWindowTitle(tr("Cooking Recipe Application"));
-    setFixedSize(800, 600);
+    setFixedSize(1000, 600);
 }
+
+void MainWindow::newRecipe()
+{
+    // Handle the behavior of the "New" action here
+}
+
 
 MainWindow::~MainWindow()
 {
