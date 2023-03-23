@@ -2,6 +2,7 @@
 
 #include "recipe.h"
 #include "qdebug.h"
+#include "recipebook.h"
 
 Recipe::Recipe(QString name, QString ingredients, QString instructions)
     : m_name(name), m_ingredients(ingredients), m_instructions(instructions)
@@ -30,4 +31,7 @@ void Recipe::setInstructions(const QString& instructions)
     m_instructions = instructions;
 }
 
-void Recipe::addRecipe
+void RecipeBook::addRecipe(const Recipe& recipe)
+{
+    recipes.push_back(recipe);
+}
