@@ -1,3 +1,5 @@
+//Name:Stephen Walsh ID:21334234
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

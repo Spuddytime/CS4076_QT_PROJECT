@@ -1,3 +1,5 @@
+//Name:Stephen Walsh ID:21334234
+
 #include "mainwindow.h"
 
 #include <QApplication>
