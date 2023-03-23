@@ -2,7 +2,6 @@
 
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -13,11 +12,12 @@ MainWindow::MainWindow(QWidget *parent)
     QMenuBar *menuBar = new QMenuBar(this);
     setMenuBar(menuBar);
 
-    // Create a "Recipe" menu
-    QMenu *fileMenu = menuBar->addMenu(tr("Recipe"));
+    // Create a "File" menu
+    QMenu *fileMenu = menuBar->addMenu(tr("File"));
 
     // Add "New" action
     QAction *newAction = new QAction(tr("New"), this);
+    connect(newAction, &QAction::triggered, this, &MainWindow::newRecipe); // Connect "New" action to newRecipe() function
     fileMenu->addAction(newAction);
 
     // Add "Open" action
@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Add "Exit" action
     QAction *exitAction = new QAction(tr("Exit"), this);
-    connect(exitAction, &QAction::triggered, this, &QWidget::close); // Close the main window when the action is triggered
+    connect(exitAction, &QAction::triggered, this, &QWidget::close); // Connect "Exit" action to close the main window
     fileMenu->addAction(exitAction);
 
     // Set the main window title and size

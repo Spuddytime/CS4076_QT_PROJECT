@@ -40,7 +40,7 @@
      <normaloff>E:/SPT/new.png</normaloff>E:/SPT/new.png</iconset>
    </property>
    <property name="text">
-    <string>New</string>
+    <string>New Recipe</string>
    </property>
   </action>
   <action name="actionOpen">
@@ -49,7 +49,7 @@
      <normaloff>E:/SPT/Open.png</normaloff>E:/SPT/Open.png</iconset>
    </property>
    <property name="text">
-    <string>Open</string>
+    <string>Open Recipe</string>
    </property>
   </action>
   <action name="actionExit">

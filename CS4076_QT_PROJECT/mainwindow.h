@@ -17,6 +17,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void newRecipe();
+
 private:
     Ui::MainWindow *ui;
 };
