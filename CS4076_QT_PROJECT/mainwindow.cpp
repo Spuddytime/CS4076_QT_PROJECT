@@ -36,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::newRecipe()
 {
-    // Handle the behavior of the "New" action here
+    QMessageBox::information(this, "New Recipe", "A new recipe is being created.");
 }
 
 
