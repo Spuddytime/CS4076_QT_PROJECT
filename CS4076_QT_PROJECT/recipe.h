@@ -4,28 +4,31 @@
 #define RECIPE_H
 
 #include <QString>
+#include <vector>
 
 class Recipe
 {
 public:
     Recipe();
+    Recipe(const QString& name, const QString& ingredients, const QString& instructions);
+    void printRecipe();
 
-    Recipe(QString name, QString ingredients, QString instructions);
-        void printRecipe();
+    QString getName() const;
+    QString getIngredients() const;
+    QString getInstructions() const;
 
-        Recipe(const QString& name, const QString& ingredients, const QString& instructions);
+    void setName(const QString& name);
+    void setIngredients(const QString& ingredients);
+    void setInstructions(const QString& instructions);
 
-           QString getName() const;
-           QString getIngredients() const;
-           QString getInstructions() const;
+    static void addRecipe(const Recipe& recipe);
 
-           void setName(const QString& name);
-           void setInstructions(const QString& instructions);
-           void setIngredients(const QString& ingredients);
 private:
-    QString m_name; //Member  variables changed to m_ for clarity sake
+    QString m_name;
     QString m_ingredients;
     QString m_instructions;
+
+    static std::vector<Recipe> s_recipes;
 };
 
 #endif // RECIPE_H

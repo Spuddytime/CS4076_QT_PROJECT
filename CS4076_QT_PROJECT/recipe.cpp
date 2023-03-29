@@ -33,5 +33,5 @@ void Recipe::setInstructions(const QString& instructions)
 
 void RecipeBook::addRecipe(const Recipe& recipe)
 {
-    recipes.push_back(recipe);
+    recipe.push_back(recipe);
 }

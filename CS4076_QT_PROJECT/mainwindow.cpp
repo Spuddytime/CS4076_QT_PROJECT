@@ -2,7 +2,6 @@
 
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "recipe.h"
 #include "recipebook.h"
 #include "recipewindow.h"
 
