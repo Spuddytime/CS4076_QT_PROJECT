@@ -6,15 +6,15 @@ std::vector<Recipe> RecipeBook::m_recipes;
 
 void RecipeBook::addRecipe(const Recipe& recipe)
 {
-    RecipeBook::m_recipes.push_back(recipe);
+    m_recipes.push_back(recipe);
 }
 
 Recipe& RecipeBook::getRecipe(int index)
 {
-    return RecipeBook::m_recipes[index];
+    return m_recipes[index];
 }
 
 int RecipeBook::getSize()
 {
-    return RecipeBook::m_recipes.size();
+    return m_recipes.size();
 }

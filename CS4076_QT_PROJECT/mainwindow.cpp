@@ -3,7 +3,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "recipebook.h"
-#include "recipewindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

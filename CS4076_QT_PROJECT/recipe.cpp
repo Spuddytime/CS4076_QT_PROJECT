@@ -5,9 +5,12 @@
 #include "recipebook.h"
 
 Recipe::Recipe(QString name, QString ingredients, QString instructions)
-    : m_name(name), m_ingredients(ingredients), m_instructions(instructions)
 {
+    m_name = name;
+    m_ingredients = ingredients;
+    m_instructions = instructions;
 }
+
 
 void Recipe::printRecipe()
 {

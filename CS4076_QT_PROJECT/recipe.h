@@ -4,13 +4,13 @@
 #define RECIPE_H
 
 #include <QString>
-#include <vector>
 
 class Recipe
 {
 public:
     Recipe();
-    Recipe(const QString& name, const QString& ingredients, const QString& instructions);
+    Recipe(QString name, QString ingredients, QString instructions);
+
     void printRecipe();
 
     QString getName() const;
@@ -18,17 +18,14 @@ public:
     QString getInstructions() const;
 
     void setName(const QString& name);
-    void setIngredients(const QString& ingredients);
     void setInstructions(const QString& instructions);
+    void setIngredients(const QString& ingredients);
 
-    static void addRecipe(const Recipe& recipe);
 
 private:
     QString m_name;
     QString m_ingredients;
     QString m_instructions;
-
-    static std::vector<Recipe> s_recipes;
 };
 
 #endif // RECIPE_H
