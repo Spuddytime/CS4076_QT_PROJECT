@@ -1,58 +1,44 @@
 #include "recipeWindow.h"
-#include "recipeBook.h"
-#include "recipe.h"
 
 RecipeWindow::RecipeWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::RecipeWindow)
+    : QDialog(parent)
 {
-    ui->setupUi(this);
+    QLabel *nameLabel = new QLabel(tr("Name:"));
+    QLabel *ingredientsLabel = new QLabel(tr("Ingredients:"));
+    QLabel *instructionsLabel = new QLabel(tr("Instructions:"));
+
+    nameEdit = new QLineEdit;
+    ingredientsEdit = new QTextEdit;
+    instructionsEdit = new QTextEdit;
+
+    QPushButton *saveButton = new QPushButton(tr("Save"));
+
+    QGridLayout *layout = new QGridLayout;
+    layout->addWidget(nameLabel, 0, 0);
+    layout->addWidget(nameEdit, 0, 1);
+    layout->addWidget(ingredientsLabel, 1, 0);
+    layout->addWidget(ingredientsEdit, 1, 1);
+    layout->addWidget(instructionsLabel, 2, 0);
+    layout->addWidget(instructionsEdit, 2, 1);
+    layout->addWidget(saveButton, 3, 1);
+
+    setLayout(layout);
+
+    connect(saveButton, SIGNAL(clicked()), this, SLOT(saveRecipe()));
 }
 
-RecipeWindow::~RecipeWindow()
+void RecipeWindow::saveRecipe()
 {
-    delete ui;
-}
+    QString name = nameEdit->text();
+    QString ingredients = ingredientsEdit->toPlainText();
+    QString instructions = instructionsEdit->toPlainText();
 
-void RecipeWindow::on_addRecipeButton_clicked()
-{
-    // Get the values from the input fields
-    QString name = ui->nameInput->text();
-    QString ingredients = ui->ingredientsInput->toPlainText();
-    QString instructions = ui->instructionsInput->toPlainText();
-
-    // Create a new recipe
-    Recipe recipe(name, ingredients, instructions);
-
-    // Add the recipe to the recipe book
-    RecipeBook::addRecipe(recipe);
-}
-
-void RecipeWindow::on_viewRecipeButton_clicked()
-{
-    // Get the selected recipe index
-    int index = ui->recipeList->currentIndex().row();
-
-    // Get the recipe from the recipe book
-    Recipe& recipe = RecipeBook::getRecipe(index);
-
-    // Set the text of the recipe display field
-    QString recipeText = recipe.getName() + "\n\n" + recipe.getIngredients() + "\n\n" + recipe.getInstructions();
-    ui->recipeDisplay->setText(recipeText);
-}
-
-void RecipeWindow::populateRecipeList()
-{
-    // Clear the recipe list
-    ui->recipeList->clear();
-
-    // Get the number of recipes in the recipe book
-    int numRecipes = RecipeBook::getSize();
-
-    // Add each recipe to the recipe list
-    for (int i = 0; i < numRecipes; i++)
-    {
-        Recipe& recipe = RecipeBook::getRecipe(i);
-        ui->recipeList->addItem(recipe.getName());
+    if (name.isEmpty() || ingredients.isEmpty() || instructions.isEmpty()) {
+        QMessageBox::warning(this, tr("Incomplete Recipe"), tr("Please enter a name, ingredients, and instructions for your recipe."));
+        return;
     }
+
+    recipeCreated = Recipe(name, ingredients, instructions);
+    accept();
 }
+
