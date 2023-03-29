@@ -1,9 +1,8 @@
-//Name:Stephen Walsh ID:21334234
+#ifndef RECIPEWINDOW_H
+#define RECIPEWINDOW_H
 
-#ifndef RECIPEWINDOW
-#define RECIPEWINDOW
-
-#include "qdialog.h"
+#include <QMainWindow> // include QMainWindow
+#include <QDialog>
 #include "recipe.h"
 #include <QTextEdit>
 #include <QLineEdit>
@@ -14,7 +13,7 @@
 
 extern Recipe recipeCreated;
 
-class RecipeWindow : public QDialog
+class RecipeWindow : public QMainWindow // inherit from QMainWindow
 {
     Q_OBJECT
 
@@ -29,6 +28,5 @@ private:
     QTextEdit *ingredientsEdit;
     QTextEdit *instructionsEdit;
 };
-
 
 #endif // RECIPEWINDOW_H

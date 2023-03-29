@@ -1,6 +1,6 @@
 #include "recipeWindow.h"
-#include "ui_recipeWindow.h"
 #include "recipeBook.h"
+#include "recipe.h"
 
 RecipeWindow::RecipeWindow(QWidget *parent)
     : QMainWindow(parent)
