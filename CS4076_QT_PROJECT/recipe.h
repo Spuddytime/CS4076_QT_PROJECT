@@ -1,5 +1,3 @@
-//Name:Stephen Walsh ID:21334234
-
 #ifndef RECIPE_H
 #define RECIPE_H
 
@@ -8,19 +6,17 @@
 class Recipe
 {
 public:
-    Recipe();
-    Recipe(QString name, QString ingredients, QString instructions);
+    Recipe(QString name = "", QString ingredients = "", QString instructions = "");
 
-    void printRecipe();
-
-    QString getName() const;
-    QString getIngredients() const;
-    QString getInstructions() const;
+    QString name() const { return m_name; }
+    QString ingredients() const { return m_ingredients; }
+    QString instructions() const { return m_instructions; }
 
     void setName(const QString& name);
-    void setInstructions(const QString& instructions);
     void setIngredients(const QString& ingredients);
+    void setInstructions(const QString& instructions);
 
+    void printRecipe();
 
 private:
     QString m_name;

@@ -1,10 +1,8 @@
-//Name:Stephen Walsh ID:21334234
-
 #ifndef RECIPEBOOK_H
 #define RECIPEBOOK_H
 
+#include "Recipe.h"
 #include <vector>
-#include "recipe.h"
 
 class RecipeBook
 {

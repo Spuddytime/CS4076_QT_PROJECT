@@ -43,13 +43,19 @@ void MainWindow::newRecipe()
     QMessageBox::information(this, "New Recipe", "A new recipe is being created.");
 
     // Create a new instance of the RecipeWindow class
-    RecipeWindow *recipeWindow = new RecipeWindow(this, m_recipeBook);
+    RecipeWindow *recipeWindow = new RecipeWindow(this);
 
-    // Show the RecipeWindow to the user
-    recipeWindow->show();
+    // Get the recipe data from the RecipeWindow
+    if (recipeWindow->exec() == QDialog::Accepted) {
+        Recipe recipe = recipeWindow->getRecipe();
+
+        // Add the new recipe to the RecipeBook
+        m_recipeBook->addRecipe(recipe);
+    }
 }
 
 MainWindow::~MainWindow()
 {
+    delete m_recipeBook;
     delete ui;
 }

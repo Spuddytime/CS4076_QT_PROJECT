@@ -1,7 +1,16 @@
-#include "recipeWindow.h"
+#include "RecipeWindow.h"
+#include <QLabel>
+#include <QTextEdit>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QGridLayout>
+#include <QMessageBox>
+#include "recipebook.h"
 
-RecipeWindow::RecipeWindow(QWidget *parent)
+
+RecipeWindow::RecipeWindow(QWidget *parent, RecipeBook *recipeBook)
     : QDialog(parent)
+    , m_recipeBook(recipeBook)
 {
     QLabel *nameLabel = new QLabel(tr("Name:"));
     QLabel *ingredientsLabel = new QLabel(tr("Ingredients:"));
@@ -24,7 +33,7 @@ RecipeWindow::RecipeWindow(QWidget *parent)
 
     setLayout(layout);
 
-    connect(saveButton, SIGNAL(clicked()), this, SLOT(saveRecipe()));
+    connect(saveButton, &QPushButton::clicked, this, &RecipeWindow::saveRecipe);
 }
 
 void RecipeWindow::saveRecipe()
@@ -38,7 +47,8 @@ void RecipeWindow::saveRecipe()
         return;
     }
 
-    recipeCreated = Recipe(name, ingredients, instructions);
+    Recipe recipe(name, ingredients, instructions);
+    m_recipeBook->addRecipe(recipe);
     accept();
 }
 
