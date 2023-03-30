@@ -5,11 +5,14 @@
 #include "recipebook.h"
 #include "recipewindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
+
+RecipeWindow recipeWindow;
+Recipe recipe = recipeWindow.getRecipe();
+
+
+MainWindow::MainWindow(QWidget *parent, RecipeBook *recipeBook)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-    // Create an instance of RecipeBook
-    , m_recipeBook(new RecipeBook)
+    , m_recipeBook(recipeBook)
 {
     ui->setupUi(this);
 
@@ -54,6 +57,8 @@ void MainWindow::newRecipe()
         m_recipeBook->addRecipe(recipe);
     }
 }
+
+
 
 MainWindow::~MainWindow()
 {

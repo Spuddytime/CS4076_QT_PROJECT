@@ -45,3 +45,9 @@ void RecipeWindow::saveRecipe()
     m_recipeBook->addRecipe(recipe);
     accept();
 }
+
+Recipe RecipeWindow::getRecipe() const
+{
+    // return the recipe object
+    return m_recipe;
+}

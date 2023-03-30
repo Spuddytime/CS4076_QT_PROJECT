@@ -18,7 +18,7 @@ class RecipeWindow : public QDialog
 
 public:
     RecipeWindow(QWidget *parent = nullptr, RecipeBook *recipeBook = nullptr);
-
+    Recipe getRecipe() const;
 private slots:
     void saveRecipe();
 
@@ -27,6 +27,7 @@ private:
     QTextEdit *ingredientsEdit;
     QTextEdit *instructionsEdit;
     RecipeBook *m_recipeBook;
+    Recipe *m_recipe;
 };
 
 #endif // RECIPEWINDOW_H
