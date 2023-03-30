@@ -48,7 +48,6 @@ void RecipeWindow::saveRecipe()
     QFile file("recipes.dat");
 
     if (!file.open(QIODevice::WriteOnly)) {
-        // TODO: Handle error opening file
         return;
     }
 
