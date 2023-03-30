@@ -1,3 +1,5 @@
+//Name:Stephen Walsh ID:21334234
+
 #include "RecipeWindow.h"
 
 RecipeWindow::RecipeWindow(QWidget *parent, RecipeBook *recipeBook)
