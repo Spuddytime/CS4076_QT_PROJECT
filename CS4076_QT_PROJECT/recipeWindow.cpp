@@ -1,12 +1,4 @@
 #include "RecipeWindow.h"
-#include <QLabel>
-#include <QTextEdit>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QGridLayout>
-#include <QMessageBox>
-#include "recipebook.h"
-
 
 RecipeWindow::RecipeWindow(QWidget *parent, RecipeBook *recipeBook)
     : QDialog(parent)
@@ -51,4 +43,3 @@ void RecipeWindow::saveRecipe()
     m_recipeBook->addRecipe(recipe);
     accept();
 }
-

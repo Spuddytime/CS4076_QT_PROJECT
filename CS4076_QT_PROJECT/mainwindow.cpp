@@ -8,7 +8,8 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , m_recipeBook(new RecipeBook) // Create an instance of RecipeBook
+    // Create an instance of RecipeBook
+    , m_recipeBook(new RecipeBook)
 {
     ui->setupUi(this);
 
@@ -43,7 +44,7 @@ void MainWindow::newRecipe()
     QMessageBox::information(this, "New Recipe", "A new recipe is being created.");
 
     // Create a new instance of the RecipeWindow class
-    RecipeWindow *recipeWindow = new RecipeWindow(this);
+    RecipeWindow *recipeWindow = new RecipeWindow(this, m_recipeBook);
 
     // Get the recipe data from the RecipeWindow
     if (recipeWindow->exec() == QDialog::Accepted) {
