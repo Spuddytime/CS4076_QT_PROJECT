@@ -12,6 +12,8 @@ public:
     static void addRecipe(const Recipe& recipe);
     static Recipe& getRecipe(int index);
     static int getSize();
+    void loadFromFile(const QString& filename);
+
 
 private:
     static std::vector<Recipe> m_recipes;

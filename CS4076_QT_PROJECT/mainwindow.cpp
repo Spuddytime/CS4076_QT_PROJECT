@@ -1,67 +1,53 @@
-//Name:Stephen Walsh ID:21334234
-
 #include "mainwindow.h"
-#include "./ui_mainwindow.h"
-#include "recipebook.h"
-#include "recipewindow.h"
-
-
-RecipeWindow recipeWindow;
-Recipe recipe = recipeWindow.getRecipe();
-
+#include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent, RecipeBook *recipeBook)
     : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
     , m_recipeBook(recipeBook)
 {
     ui->setupUi(this);
+    connect(ui->actionNew_Recipe, &QAction::triggered, this, &MainWindow::newRecipe);
+    connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::on_actionOpen_triggered);
 
-    // Create a menu bar
-    QMenuBar *menuBar = new QMenuBar(this);
-    setMenuBar(menuBar);
+    // Load recipes from file
+    m_recipeBook->loadFromFile("recipes.dat");
+}
 
-    // Create a "File" menu
-    QMenu *fileMenu = menuBar->addMenu(tr("File"));
-
-    // Add "New" action
-    QAction *newAction = new QAction(tr("New"), this);
-    connect(newAction, &QAction::triggered, this, &MainWindow::newRecipe); // Connect "New" action to newRecipe() function
-    fileMenu->addAction(newAction);
-
-    // Add "Open" action
-    QAction *openAction = new QAction(tr("Open"), this);
-    fileMenu->addAction(openAction);
-
-    // Add "Exit" action
-    QAction *exitAction = new QAction(tr("Exit"), this);
-    connect(exitAction, &QAction::triggered, this, &QWidget::close); // Connect "Exit" action to close the main window
-    fileMenu->addAction(exitAction);
-
-    // Set the main window title and size
-    setWindowTitle(tr("Cooking Recipe Application"));
-    setFixedSize(1000, 600);
+MainWindow::~MainWindow()
+{
+    delete ui;
 }
 
 void MainWindow::newRecipe()
 {
-    QMessageBox::information(this, "New Recipe", "A new recipe is being created.");
-
-    // Create a new instance of the RecipeWindow class
-    RecipeWindow *recipeWindow = new RecipeWindow(this, m_recipeBook);
-
-    // Get the recipe data from the RecipeWindow
-    if (recipeWindow->exec() == QDialog::Accepted) {
-        Recipe recipe = recipeWindow->getRecipe();
-
-        // Add the new recipe to the RecipeBook
-        m_recipeBook->addRecipe(recipe);
-    }
+    RecipeWindow recipeWindow(this, m_recipeBook);
+    recipeWindow.setModal(true);
+    recipeWindow.exec();
 }
 
-
-
-MainWindow::~MainWindow()
+void MainWindow::on_actionOpen_triggered()
 {
-    delete m_recipeBook;
-    delete ui;
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Recipe File"), "", tr("Recipe Files (*.recipe);;All Files (*)"));
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, tr("Error"), tr("Could not open file."));
+        return;
+    }
+
+    QTextStream in(&file);
+    QString name = in.readLine();
+    QString ingredients = in.readLine();
+    QString instructions = in.readAll();
+
+    Recipe recipe(name, ingredients, instructions);
+    m_recipeBook->addRecipe(recipe);
+
+    file.close();
 }
+
+

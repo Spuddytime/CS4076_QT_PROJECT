@@ -43,11 +43,24 @@ void RecipeWindow::saveRecipe()
 
     Recipe recipe(name, ingredients, instructions);
     m_recipeBook->addRecipe(recipe);
+
+    // Save recipes to file
+    QFile file("recipes.dat");
+
+    if (!file.open(QIODevice::WriteOnly)) {
+        // TODO: Handle error opening file
+        return;
+    }
+
+    QDataStream out(&file);
+    out << RecipeBook::m_recipes;
+
+    file.close();
+
     accept();
 }
-
 Recipe RecipeWindow::getRecipe() const
 {
     // return the recipe object
-    return m_recipe;
+    return *m_recipe;
 }

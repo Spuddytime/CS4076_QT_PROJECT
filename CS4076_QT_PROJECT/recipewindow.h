@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include <QGridLayout>
 #include <QLabel>
+#include <QFile>
 #include <QPushButton>
 #include "recipebook.h"
 
